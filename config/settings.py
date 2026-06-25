@@ -48,6 +48,10 @@ INSTALLED_APPS = [
     'apps.orders',
     'apps.couriers',
     'apps.dispatch',
+    'apps.payments',
+    'apps.notifications',
+    'apps.reviews',
+    'apps.support',
 
     # third-party apps
     'rest_framework',
@@ -192,3 +196,20 @@ CHANNEL_LAYERS = {
             "CONFIG": {"hosts": [("127.0.0.1", 6379)]},
         }
     }
+
+# FCM
+FCM_SERVER_KEY = env("FCM_SERVER_KEY")
+
+# SMS (choose one)
+SMS_PROVIDER = "eskiz"  # or "playmobile"
+ESKIZ_EMAIL = env("ESKIZ_EMAIL")
+ESKIZ_PASSWORD = env("ESKIZ_PASSWORD")
+ESKIZ_FROM = "4546"  # or your sender name
+
+# Telegram admin alerts
+TELEGRAM_BOT_TOKEN = env("TELEGRAM_BOT_TOKEN")
+TELEGRAM_ADMIN_CHAT_ID = env("TELEGRAM_ADMIN_CHAT_ID")
+
+# Email
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+DEFAULT_FROM_EMAIL = "noreply@glovo.uz"

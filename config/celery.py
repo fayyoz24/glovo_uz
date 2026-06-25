@@ -54,6 +54,16 @@ app.conf.beat_schedule = {
         "schedule": crontab(minute=0, hour=2, day_of_week=0),  # har dushanba 02:00
         "options": {"queue": "maintenance"},
     },
+
+    # ── notifications ────────────────────────────────────────────────────────────────
+    "retry-failed-notifications": {
+        "task": "notifications.retry_failed_notifications",
+        "schedule": crontab(minute="*/10"),
+    },
+    "cleanup-old-notifications": {
+        "task": "notifications.cleanup_old_notifications",
+        "schedule": crontab(hour=3, minute=0),
+    },
 }
 
 app.conf.task_queues_default_exchange = "default"

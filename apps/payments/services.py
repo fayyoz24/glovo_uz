@@ -574,3 +574,16 @@ def handle_click_webhook(data: dict) -> dict:
         }
 
     return {"error": -3, "error_note": "Action noto'g'ri."}
+
+
+# payment refund
+
+from apps.notifications.tasks import send_payment_notification
+from apps.notifications.constants import NotificationEvent
+
+send_payment_notification.delay(
+    event=NotificationEvent.PAYMENT_RECEIVED,
+    customer_id=order.customer_id,
+    context={"amount": str(transaction.amount)},
+    order_id=str(order.id),
+)
