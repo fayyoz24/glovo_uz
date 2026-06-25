@@ -43,6 +43,18 @@ INSTALLED_APPS = [
     'apps.common',
     'apps.locations',
     'apps.merchants',
+    'apps.catalog',
+    'apps.carts',
+    'apps.orders',
+    'apps.couriers',
+    'apps.dispatch',
+
+    # third-party apps
+    'rest_framework',
+    'rest_framework_simplejwt',
+    'django_celery_beat',
+    "channels",
+
 
 ]
 
@@ -123,3 +135,60 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 AUTH_USER_MODEL = "accounts.User"
+
+
+# CELERY BEAT SCHEDULE
+from celery.schedules import crontab
+
+CELERY_BROKER_URL = "redis://localhost:6379/0"
+CELERY_RESULT_BACKEND = "redis://localhost:6379/1"
+CELERY_TIMEZONE = "Asia/Tashkent"
+CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_SERIALIZER = "json"
+CELERY_ACCEPT_CONTENT = ["json"]
+CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
+
+
+# CELERY_BEAT_SCHEDULE = {
+#     "auto-cancel-unpaid-orders": {
+#         "task": "apps.orders.tasks.auto_cancel_unpaid_orders",
+#         "schedule": crontab(minute="*/5"),  # har 5 daqiqada
+#     },
+#     "cleanup-stale-carts": {
+#         "task": "apps.orders.tasks.cleanup_stale_carts",
+#         "schedule": crontab(minute=0, hour="*/2"),  # har 2 soatda
+#     },
+# }
+
+CELERY_BEAT_SCHEDULE = {
+    # Dispatch
+    "sweep-expired-offers": {
+        "task": "apps.dispatch.tasks.sweep_expired_offers",
+        "schedule": 60.0,  # har 60 soniyada
+    },
+    # Orders
+    "auto-cancel-unpaid-orders": {
+        "task": "apps.orders.tasks.auto_cancel_unpaid_orders",
+        "schedule": crontab(minute="*/5"),
+    },
+    "cleanup-stale-carts": {
+        "task": "apps.orders.tasks.cleanup_stale_carts",
+        "schedule": crontab(minute=0, hour="*/2"),
+    },
+    # Couriers
+    "cleanup-old-location-pings": {
+        "task": "apps.couriers.tasks.cleanup_old_location_pings",
+        "schedule": crontab(minute=0, hour=2),  # kecha soat 02:00
+    },
+    "auto-end-stale-shifts": {
+        "task": "apps.couriers.tasks.auto_end_stale_shifts",
+        "schedule": crontab(minute=0),  # har soatda
+    },
+}
+ASGI_APPLICATION = "config.asgi.application"
+CHANNEL_LAYERS = {
+        "default": {
+            "BACKEND": "channels_redis.core.RedisChannelLayer",
+            "CONFIG": {"hosts": [("127.0.0.1", 6379)]},
+        }
+    }

@@ -37,3 +37,33 @@ class Merchant(models.Model):
     @property
     def is_active(self):
         return self.status == MerchantStatus.ACTIVE
+
+class MerchantStaffProfile(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user = models.OneToOneField(
+        "accounts.User",
+        on_delete=models.CASCADE,
+        related_name="merchant_staff_profile",
+    )
+    merchant = models.ForeignKey(
+        "merchants.Merchant",
+        on_delete=models.CASCADE,
+        related_name="staff_profiles",
+    )
+    branch = models.ForeignKey(
+        "merchants.MerchantBranch",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="staff_profiles",
+    )
+    position = models.CharField(max_length=50, blank=True)
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        db_table = "merchants_merchant_staff_profile"
+
+    def __str__(self):
+        return f"Staff({self.user.phone} @ {self.merchant})"

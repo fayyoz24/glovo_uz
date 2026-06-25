@@ -1,5 +1,6 @@
 from .user import User
-from .profiles import CustomerProfile, CourierProfile, MerchantStaffProfile
+from .profiles import CustomerProfile, CourierProfile
+from apps.merchants.models.merchant import MerchantStaffProfile
 from .otp import OTPCode
 from .device import DeviceToken
 
