@@ -2,13 +2,13 @@ from rest_framework import views, status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from apps.carts.selectors import get_or_create_active_cart
 from apps.carts.services import (
     add_item_to_cart,
     update_cart_item,
     remove_cart_item,
     clear_cart,
     apply_promo_code,
+    get_or_create_active_cart
 )
 from apps.carts.api.serializers import (
     CartSerializer,
@@ -28,7 +28,7 @@ class CartView(views.APIView):
         return Response(CartSerializer(cart).data)
 
 
-class CartAddItemView(views.APIView):
+class CartItemAddView(views.APIView):
     """POST /api/v1/cart/items/ — savatga mahsulot qo'shish"""
     permission_classes = [IsAuthenticated]
 

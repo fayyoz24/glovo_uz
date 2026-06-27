@@ -7,7 +7,7 @@ config/urls.py ga:
 """
 from django.urls import path
 
-from reviews.api.views import (
+from apps.reviews.api.views import (
     MerchantRatingStatsView,
     MerchantReviewListView,
     MyReviewsView,

@@ -6,16 +6,16 @@ from __future__ import annotations
 from django.db import transaction
 from django.utils import timezone
 
-from reviews.constants import ReviewStatus
-from reviews.exceptions import (
+from apps.reviews.constants import ReviewStatus
+from apps.reviews.exceptions import (
     ReviewAlreadyExists,
     ReviewAlreadyReplied,
     ReviewNotAllowed,
     ReviewNotFound,
     ReviewNotOwner,
 )
-from reviews.models import Review, ReviewFlag, ReviewImage
-from reviews.selectors import (
+from apps.reviews.models import Review, ReviewFlag, ReviewImage
+from apps.reviews.selectors import (
     get_review_by_id,
     get_review_by_order,
     has_review_for_order,

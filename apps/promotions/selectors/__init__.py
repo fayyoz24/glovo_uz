@@ -11,8 +11,8 @@ from uuid import UUID
 from django.db.models import QuerySet
 from django.utils import timezone
 
-from promotions.constants import PromoStatus
-from promotions.models import PromoCampaign, PromoUsage, ReferralCode, ReferralUsage
+from apps.promotions.constants import PromoStatus
+from apps.promotions.models import PromoCampaign, PromoUsage, ReferralCode, ReferralUsage
 
 
 # ─────────────────────────── PromoCampaign ───────────────────────────────────

@@ -1,4 +1,4 @@
-from .courier_profile import CourierProfile
+from apps.accounts.models.profiles import CourierProfile
 from .location import CourierLocationPing
 from .shift import CourierShift
 from .earnings import CourierEarning

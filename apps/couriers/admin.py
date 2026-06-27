@@ -2,15 +2,15 @@ from django.contrib import admin
 from apps.couriers.models import CourierProfile, CourierLocationPing, CourierShift, CourierEarning
 
 
-@admin.register(CourierProfile)
-class CourierProfileAdmin(admin.ModelAdmin):
-    list_display = [
-        "user", "vehicle_type", "courier_status", "is_approved",
-        "rating", "total_deliveries", "balance",
-    ]
-    list_filter = ["courier_status", "vehicle_type", "is_approved"]
-    search_fields = ["user__phone", "user__full_name", "vehicle_number"]
-    list_editable = ["is_approved"]
+# @admin.register(CourierProfile)
+# class CourierProfileAdmin(admin.ModelAdmin):
+#     list_display = [
+#         "user", "vehicle_type", "courier_status", "is_approved",
+#         "rating", "total_deliveries", "balance",
+#     ]
+#     list_filter = ["courier_status", "vehicle_type", "is_approved"]
+#     search_fields = ["user__phone", "user__full_name", "vehicle_number"]
+#     list_editable = ["is_approved"]
 
 
 @admin.register(CourierShift)

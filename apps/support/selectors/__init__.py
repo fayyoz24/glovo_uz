@@ -5,8 +5,8 @@ from typing import Optional
 
 from django.db.models import QuerySet, Prefetch
 
-from support.models import Complaint, ComplaintMessage, Dispute, RefundRequest
-from support.constants import ComplaintStatus, DisputeStatus, RefundRequestStatus
+from apps.support.models import Complaint, ComplaintMessage, Dispute, RefundRequest
+from apps.support.constants import ComplaintStatus, DisputeStatus, RefundRequestStatus
 
 
 # ---------------------------------------------------------------------------

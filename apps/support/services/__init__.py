@@ -6,21 +6,21 @@ from typing import Optional
 from django.db import transaction
 from django.utils import timezone
 
-from support.models import Complaint, ComplaintMessage, Dispute, RefundRequest
-from support.constants import (
+from apps.support.models import Complaint, ComplaintMessage, Dispute, RefundRequest
+from apps.support.constants import (
     ComplaintStatus,
     DisputeStatus,
     MessageSender,
     RefundRequestStatus,
     TicketPriority,
 )
-from support.exceptions import (
+from apps.support.exceptions import (
     ComplaintAlreadyClosed,
     DuplicateComplaint,
     InvalidStatusTransition,
     RefundAlreadyProcessed,
 )
-from support.selectors import (
+from apps.support.selectors import (
     get_open_complaint_for_order,
     get_existing_refund_for_order,
 )

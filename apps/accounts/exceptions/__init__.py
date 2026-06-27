@@ -36,3 +36,8 @@ class UserInactive(APIException):
     status_code = status.HTTP_403_FORBIDDEN
     default_detail = "User account is disabled."
     default_code = "user_inactive"
+
+
+class OTPChannelUnavailable(APIException):
+    status_code = 400
+    default_detail = "Bu kanal mavjud emas yoki bog'lanmagan"

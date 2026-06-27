@@ -26,13 +26,22 @@ class BranchMismatch(APIException):
     default_code = "branch_mismatch"
 
 
+class CartBranchConflict(APIException):
+    status_code = status.HTTP_409_CONFLICT
+    default_detail = (
+        "Your cart already contains items from another branch. "
+        "Please clear your cart before adding products from a different branch."
+    )
+    default_code = "cart_branch_conflict"
+
+
 class InvalidQuantity(APIException):
     status_code = status.HTTP_400_BAD_REQUEST
     default_detail = "Invalid quantity."
     default_code = "invalid_quantity"
 
 
-class PromoCodeInvalid(APIException):
+class InvalidPromoCode(APIException):
     status_code = status.HTTP_400_BAD_REQUEST
     default_detail = "Promo code is invalid or has expired."
     default_code = "promo_invalid"

@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
-from reviews.models import Review, ReviewFlag, ReviewImage
-from reviews.models.review_flag import FlagReason
+from apps.reviews.models import Review, ReviewFlag, ReviewImage
+from apps.reviews.models.review_flag import FlagReason
 
 
 # ──────────────────────────── Nested ─────────────────────────────────────────

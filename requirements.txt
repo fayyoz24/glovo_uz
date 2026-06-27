@@ -22,8 +22,9 @@ django-storages
 # Utils
 Pillow
 python-decouple
+phonenumbers
 django-cors-headers
-
+requests
 # Monitoring
 sentry-sdk
 

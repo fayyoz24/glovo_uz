@@ -2,7 +2,7 @@ from decimal import Decimal
 
 from rest_framework import serializers
 
-from promotions.models import PromoCampaign, PromoUsage, ReferralCode
+from apps.promotions.models import PromoCampaign, PromoUsage, ReferralCode
 
 
 # ─────────────────────────── Customer-facing ─────────────────────────────────

@@ -269,3 +269,33 @@ def cleanup_old_notifications(days: int = 90) -> dict:
 
     logger.info("cleanup_old_notifications: deleted=%d", deleted)
     return {"deleted": deleted}
+
+
+@shared_task(
+    bind=True,
+    max_retries=3,
+    default_retry_delay=10,
+    name="notifications.send_otp_telegram",
+)
+def send_otp_telegram(self, telegram_user_id: int, code: str) -> None:
+    """
+    Dedicated OTP task – Telegram Bot API orqali yuboradi.
+    Called from accounts app OTP service when channel='telegram'.
+    """
+    import httpx
+ 
+    text = f"🔐 Tasdiqlash kodi: *{code}*\n\n⏱ 5 daqiqa amal qiladi."
+    try:
+        response = httpx.post(
+            f"https://api.telegram.org/bot{settings.TELEGRAM_BOT_TOKEN}/sendMessage",
+            json={
+                "chat_id": telegram_user_id,
+                "text": text,
+                "parse_mode": "Markdown",
+            },
+            timeout=10,
+        )
+        response.raise_for_status()
+    except Exception as exc:
+        logger.exception("send_otp_telegram failed for telegram_user_id=%s", telegram_user_id)
+        raise self.retry(exc=exc)

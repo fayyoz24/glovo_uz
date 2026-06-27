@@ -1,7 +1,7 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
-from support.api.views import (
+from apps.support.api.views import (
     AdminComplaintViewSet,
     CustomerComplaintViewSet,
     DisputeViewSet,

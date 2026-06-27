@@ -6,8 +6,8 @@ import uuid
 from celery import shared_task
 from django.utils import timezone
 
-from support.constants import ComplaintStatus, RefundRequestStatus
-from support.selectors import get_complaint_by_id, get_refund_request_by_id
+from apps.support.constants import ComplaintStatus, RefundRequestStatus
+from apps.support.selectors import get_complaint_by_id, get_refund_request_by_id
 
 logger = logging.getLogger(__name__)
 

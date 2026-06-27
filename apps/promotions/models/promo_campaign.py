@@ -4,7 +4,7 @@ from decimal import Decimal
 from django.db import models
 from django.utils import timezone
 
-from promotions.constants import DiscountType, PromoStatus, PromoTargetType
+from apps.promotions.constants import DiscountType, PromoStatus, PromoTargetType
 
 
 class PromoCampaign(models.Model):

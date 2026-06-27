@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
-from support.models import Complaint, ComplaintMessage, Dispute, RefundRequest
-from support.constants import (
+from apps.support.models import Complaint, ComplaintMessage, Dispute, RefundRequest
+from apps.support.constants import (
     ComplaintType,
     ComplaintStatus,
     DisputeStatus,

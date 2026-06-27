@@ -2,7 +2,8 @@ import uuid
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
 from apps.accounts.constants import UserRole, Language
-from apps.accounts.services.profile import normalize_phone
+from apps.accounts.utils.phone import normalize_phone
+
 
 class UserManager(BaseUserManager):
     def create_user(self, phone, password=None, **extra_fields):

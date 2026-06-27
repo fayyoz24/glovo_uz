@@ -27,7 +27,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from reviews.api.serializers import (
+from apps.reviews.api.serializers import (
     AdminModerationSerializer,
     AdminReviewDetailSerializer,
     AdminReviewListSerializer,
@@ -39,9 +39,9 @@ from reviews.api.serializers import (
     ReviewFlagSerializer,
     ReviewUpdateSerializer,
 )
-from reviews.exceptions import ReviewError
-from reviews.permissions import IsAdminOrOps, IsMerchantStaff, IsReviewOwner
-from reviews.selectors import (
+from apps.reviews.exceptions import ReviewError
+from apps.reviews.permissions import IsAdminOrOps, IsMerchantStaff, IsReviewOwner
+from apps.reviews.selectors import (
     get_courier_rating_stats,
     get_courier_reviews,
     get_customer_reviews,
@@ -50,7 +50,7 @@ from reviews.selectors import (
     get_review_by_id,
     get_reviews_for_admin,
 )
-from reviews.services import ReviewService
+from apps.reviews.services import ReviewService
 
 
 def _get_order_or_404(order_id, customer):

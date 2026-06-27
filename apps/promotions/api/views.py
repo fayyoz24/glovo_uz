@@ -20,7 +20,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from promotions.api.serializers import (
+from apps.promotions.api.serializers import (
     PromoCampaignCreateSerializer,
     PromoCampaignDetailSerializer,
     PromoCampaignListSerializer,
@@ -30,15 +30,15 @@ from promotions.api.serializers import (
     PromoValidateSerializer,
     ReferralCodeSerializer,
 )
-from promotions.exceptions import PromoError
-from promotions.permissions import IsAdminOrOps
-from promotions.selectors import (
+from apps.promotions.exceptions import PromoError
+from apps.promotions.permissions import IsAdminOrOps
+from apps.promotions.selectors import (
     get_promo_by_id,
     get_promo_usages,
     get_promos_for_admin,
     get_referral_stats,
 )
-from promotions.services import PromoService, ReferralService
+from apps.promotions.services import PromoService, ReferralService
 
 
 # ═════════════════════════ CUSTOMER VIEWS ════════════════════════════════════

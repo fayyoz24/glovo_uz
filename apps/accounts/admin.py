@@ -1,6 +1,14 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from apps.accounts.models import User, CustomerProfile, CourierProfile, MerchantStaffProfile, OTPCode, DeviceToken
+from apps.accounts.models import (
+    User,
+    CustomerProfile,
+    CourierProfile,
+    MerchantStaffProfile,
+    OTPCode,
+    DeviceToken,
+    TelegramBinding,
+)
 
 
 @admin.register(User)
@@ -27,8 +35,17 @@ class CourierProfileAdmin(admin.ModelAdmin):
 
 @admin.register(OTPCode)
 class OTPCodeAdmin(admin.ModelAdmin):
-    list_display = ["phone", "code", "is_used", "attempts", "created_at", "expires_at"]
-    list_filter = ["is_used"]
+    list_display = ["phone", "channel", "code", "is_used", "attempts", "created_at", "expires_at"]
+    list_filter = ["is_used", "channel"]
+    search_fields = ["phone"]
+
+
+@admin.register(TelegramBinding)
+class TelegramBindingAdmin(admin.ModelAdmin):
+    list_display = ["user", "telegram_user_id", "telegram_username", "is_confirmed", "linked_at"]
+    list_filter = ["is_confirmed"]
+    search_fields = ["user__phone", "telegram_username", "telegram_user_id"]
+    readonly_fields = ["link_token", "linked_at"]
 
 
 admin.site.register(CustomerProfile)

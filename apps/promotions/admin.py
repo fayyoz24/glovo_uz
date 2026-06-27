@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from promotions.models import PromoCampaign, PromoUsage, ReferralCode, ReferralUsage
+from apps.promotions.models import PromoCampaign, PromoUsage, ReferralCode, ReferralUsage
 
 
 @admin.register(PromoCampaign)

@@ -8,8 +8,8 @@ from uuid import UUID
 
 from django.db.models import Avg, Count, Q, QuerySet
 
-from reviews.constants import ReviewStatus
-from reviews.models import Review, ReviewFlag
+from apps.reviews.constants import ReviewStatus
+from apps.reviews.models import Review, ReviewFlag
 
 
 # ──────────────────────────── Review ─────────────────────────────────────────

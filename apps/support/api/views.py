@@ -4,7 +4,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 
-from support.api.serializers import (
+from apps.support.api.serializers import (
     AddMessageSerializer,
     AssignComplaintSerializer,
     ComplaintDetailSerializer,
@@ -21,18 +21,18 @@ from support.api.serializers import (
     UpdateComplaintStatusSerializer,
     UpdateDisputeSerializer,
 )
-from support.constants import MessageSender
-from support.exceptions import (
+from apps.support.constants import MessageSender
+from apps.support.exceptions import (
     ComplaintNotFound,
     DisputeNotFound,
     RefundRequestNotFound,
 )
-from support.permissions import (
+from apps.support.permissions import (
     IsComplaintOwnerOrSupport,
     IsRefundRequestOwnerOrSupport,
     IsSupportAgent,
 )
-from support.selectors import (
+from apps.support.selectors import (
     get_all_complaints,
     get_all_disputes,
     get_all_refund_requests,
@@ -45,7 +45,7 @@ from support.selectors import (
     get_refund_request_by_id,
     get_refund_requests_for_customer,
 )
-from support.services import (
+from apps.support.services import (
     add_complaint_message,
     approve_refund_request,
     assign_complaint,

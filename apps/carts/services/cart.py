@@ -10,7 +10,7 @@ from apps.carts.exceptions import (
     CartItemNotFound,
     BranchMismatch,
     InvalidQuantity,
-    PromoCodeInvalid,
+    InvalidPromoCode,
     PromoMinOrderNotMet,
     CartEmpty,
 )

@@ -12,8 +12,8 @@ from typing import Optional
 from django.db import transaction
 from django.utils import timezone
 
-from promotions.constants import DiscountType, PromoStatus, PromoTargetType
-from promotions.exceptions import (
+from apps.promotions.constants import DiscountType, PromoStatus, PromoTargetType
+from apps.promotions.exceptions import (
     PromoExpired,
     PromoMinOrderNotMet,
     PromoNotActive,
@@ -23,8 +23,8 @@ from promotions.exceptions import (
     PromoPerUserLimitReached,
     PromoUsageLimitReached,
 )
-from promotions.models import PromoCampaign, PromoUsage, ReferralCode, ReferralUsage
-from promotions.selectors import (
+from apps.promotions.models import PromoCampaign, PromoUsage, ReferralCode, ReferralUsage
+from apps.promotions.selectors import (
     get_promo_by_code,
     get_referral_code_by_code,
     get_referral_code_by_user,

@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'apps.couriers',
     'apps.dispatch',
     'apps.payments',
+    'apps.promotions',
     'apps.notifications',
     'apps.reviews',
     'apps.support',
@@ -213,3 +214,7 @@ TELEGRAM_ADMIN_CHAT_ID = config("TELEGRAM_ADMIN_CHAT_ID")
 # Email
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 DEFAULT_FROM_EMAIL = "noreply@glovo.uz"
+
+TELEGRAM_BOT_TOKEN = config("TELEGRAM_BOT_TOKEN")
+TELEGRAM_BOT_USERNAME = config("TELEGRAM_BOT_USERNAME")   # @ belgisisiz, masalan: "GlovoUZBot"
+TELEGRAM_WEBHOOK_SECRET = config("TELEGRAM_WEBHOOK_SECRET")
