@@ -3,7 +3,7 @@ import uuid
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
-from reviews.constants import RATING_CHOICES, ReviewStatus, ReviewType
+from apps.reviews.constants import RATING_CHOICES, ReviewStatus, ReviewType
 
 
 class Review(models.Model):

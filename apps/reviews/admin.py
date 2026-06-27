@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from reviews.models import Review, ReviewFlag, ReviewImage
+from apps.reviews.models import Review, ReviewFlag, ReviewImage
 
 
 class ReviewImageInline(admin.TabularInline):

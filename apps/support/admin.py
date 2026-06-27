@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from support.models import Complaint, ComplaintMessage, Dispute, RefundRequest
+from apps.support.models import Complaint, ComplaintMessage, Dispute, RefundRequest
 
 
 @admin.register(Complaint)

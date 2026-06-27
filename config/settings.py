@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
-
+from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -198,17 +198,17 @@ CHANNEL_LAYERS = {
     }
 
 # FCM
-FCM_SERVER_KEY = env("FCM_SERVER_KEY")
+FCM_SERVER_KEY = config("FCM_SERVER_KEY")
 
 # SMS (choose one)
 SMS_PROVIDER = "eskiz"  # or "playmobile"
-ESKIZ_EMAIL = env("ESKIZ_EMAIL")
-ESKIZ_PASSWORD = env("ESKIZ_PASSWORD")
+ESKIZ_EMAIL = config("ESKIZ_EMAIL")
+ESKIZ_PASSWORD = config("ESKIZ_PASSWORD")
 ESKIZ_FROM = "4546"  # or your sender name
 
 # Telegram admin alerts
-TELEGRAM_BOT_TOKEN = env("TELEGRAM_BOT_TOKEN")
-TELEGRAM_ADMIN_CHAT_ID = env("TELEGRAM_ADMIN_CHAT_ID")
+TELEGRAM_BOT_TOKEN = config("TELEGRAM_BOT_TOKEN")
+TELEGRAM_ADMIN_CHAT_ID = config("TELEGRAM_ADMIN_CHAT_ID")
 
 # Email
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
