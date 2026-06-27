@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # created apps
     'apps.accounts',
+    'apps.analytics',
     'apps.common',
     'apps.locations',
     'apps.merchants',

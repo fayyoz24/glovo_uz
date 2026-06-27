@@ -23,7 +23,7 @@ class DeviceToken(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
-        related_name="device_tokens",
+        related_name="notification_device_tokens"
     )
     token = models.TextField()
     provider = models.CharField(

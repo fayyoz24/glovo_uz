@@ -3,7 +3,7 @@ from django.db import models
 from django.utils import timezone
 from apps.accounts.constants import OTP_EXPIRY_SECONDS
 from datetime import timedelta
-
+from apps.accounts.utils.phone import otp_expiry_time
 
 class OTPChannel(models.TextChoices):
     SMS      = "sms",      "SMS"
@@ -41,7 +41,7 @@ class OTPCode(models.Model):
         auto_now_add=True,
     )
     expires_at = models.DateTimeField(
-        default=lambda: timezone.now() + timedelta(seconds=OTP_EXPIRY_SECONDS),
+        default=otp_expiry_time,
         db_index=True,
     )
 

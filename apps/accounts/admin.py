@@ -29,8 +29,8 @@ class UserAdmin(BaseUserAdmin):
 
 @admin.register(CourierProfile)
 class CourierProfileAdmin(admin.ModelAdmin):
-    list_display = ["user", "vehicle_type", "is_online", "is_available", "is_approved", "rating"]
-    list_filter = ["vehicle_type", "is_online", "is_approved"]
+    list_display = ["user", "vehicle_type", "is_approved", "rating"]
+    list_filter = ["vehicle_type", "is_approved"]
 
 
 @admin.register(OTPCode)

@@ -7,7 +7,7 @@ class DeviceToken(models.Model):
     user = models.ForeignKey(
         "accounts.User",
         on_delete=models.CASCADE,
-        related_name="device_tokens",
+        related_name="account_device_tokens",
     )
     token = models.TextField()
     platform = models.CharField(

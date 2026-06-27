@@ -10,13 +10,7 @@ class CustomerProfile(models.Model):
         on_delete=models.CASCADE,
         related_name="customer_profile",
     )
-    default_address = models.ForeignKey(
-        "locations.Address",
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name="+",
-    )
+
     notes = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -46,7 +40,7 @@ class CourierProfile(models.Model):
     updated_at = models.DateTimeField(auto_now=True) 
 
     class Meta: 
-        db_table = "courier_profile" 
+        db_table = "accounts_courier_profile" 
 
     def __str__(self): 
         return f"Courier: {self.user}"
