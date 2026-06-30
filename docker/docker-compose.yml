@@ -153,6 +153,19 @@ services:
       --scheduler django_celery_beat.schedulers:DatabaseScheduler
 
   # ---------------------------------------------------------
+  # telegram-bot: OTP yetkazish va TelegramBinding tasdiqlash
+  # Polling (dev) yoki webhook (prod) rejimida ishlaydi.
+  # ---------------------------------------------------------
+  telegram-bot:
+    <<: *django-common
+    container_name: glovo_telegram_bot
+    environment:
+      SERVICE_ROLE: telegram_bot
+    command: >
+      python -m telegram_bot.main
+    restart: unless-stopped
+
+  # ---------------------------------------------------------
   # Nginx reverse proxy — routes /ws/* to channels, everything else to backend-api,
   # serves collected static files directly.
   # ---------------------------------------------------------

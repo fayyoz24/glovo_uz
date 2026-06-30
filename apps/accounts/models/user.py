@@ -39,7 +39,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     language = models.CharField(
         max_length=5,
         choices=Language.CHOICES,
-        default=Language.RU,
+        default=Language.UZ,   # FIX: Uzbekiston bozori uchun UZ default
     )
     is_active = models.BooleanField(default=True)
     is_verified = models.BooleanField(default=False)

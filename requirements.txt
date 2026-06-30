@@ -10,6 +10,7 @@ psycopg2-binary
 redis
 celery
 celery[redis]
+django-celery-beat
 
 # Realtime
 channels
@@ -19,14 +20,21 @@ channels-redis
 boto3
 django-storages
 
+# HTTP clients
+requests
+httpx
+
+# Telegram bot
+aiogram==3.13.1
+
 # Utils
 Pillow
 python-decouple
 phonenumbers
 django-cors-headers
-requests
+
 # Monitoring
-sentry-sdk
+sentry-sdk[django]
 
 # Testing
 pytest

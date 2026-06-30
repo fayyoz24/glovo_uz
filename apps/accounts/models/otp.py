@@ -103,6 +103,8 @@ class TelegramBinding(models.Model):
     )
     telegram_user_id = models.BigIntegerField(
         unique=True,
+        null=True,       # FIX: binding yaratilganda hali Telegram ID yo'q
+        blank=True,
         help_text="Telegram chat_id (from bot)",
     )
     telegram_username = models.CharField(

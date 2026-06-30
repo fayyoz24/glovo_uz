@@ -83,7 +83,7 @@ class PromoService:
 
         # Foydalanuvchi cheklovi
         if promo.target_type == PromoTargetType.NEW_USERS:
-            from orders.models import Order  # circular import oldini olish
+            from apps.orders.models import Order  # FIX: to'g'ri import path
             has_orders = Order.objects.filter(customer=user).exists()
             if has_orders:
                 raise PromoNotApplicableToUser()
@@ -142,12 +142,7 @@ class PromoService:
             discount_amount_applied=discount_amount,
         )
 
-        # Atomik counter oshirish
-        PromoCampaign.objects.filter(pk=promo.pk).update(
-            usage_count=PromoCampaign._default_manager.model._default_manager
-            .__class__.__mro__[0]  # select_for_update yoki F() ishlatamiz
-        )
-        # F() expression bilan to'g'ri yo'l:
+        # FIX: avvalgi siniq kod o'chirildi — to'g'ri F() expression
         from django.db.models import F
         PromoCampaign.objects.filter(pk=promo.pk).update(usage_count=F("usage_count") + 1)
 
@@ -283,7 +278,7 @@ class ReferralService:
         )
 
         # Bonus yozish (wallet app yoki signal orqali)
-        from promotions.tasks import credit_referral_bonus_task
+        from apps.promotions.tasks import credit_referral_bonus_task  # FIX: to'g'ri import path
         credit_referral_bonus_task.delay(
             referrer_user_id=str(usage.referral_code.user_id),
             referee_user_id=str(referee_user.id),

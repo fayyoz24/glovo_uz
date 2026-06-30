@@ -282,16 +282,16 @@ def send_otp_telegram(self, telegram_user_id: int, code: str) -> None:
     Dedicated OTP task – Telegram Bot API orqali yuboradi.
     Called from accounts app OTP service when channel='telegram'.
     """
-    import httpx
- 
-    text = f"🔐 Tasdiqlash kodi: *{code}*\n\n⏱ 5 daqiqa amal qiladi."
+    import requests
+
+    text = f"🔐 Tasdiqlash kodi: <b>{code}</b>\n\n⏱ 5 daqiqa amal qiladi."
     try:
-        response = httpx.post(
+        response = requests.post(
             f"https://api.telegram.org/bot{settings.TELEGRAM_BOT_TOKEN}/sendMessage",
             json={
                 "chat_id": telegram_user_id,
                 "text": text,
-                "parse_mode": "Markdown",
+                "parse_mode": "HTML",
             },
             timeout=10,
         )

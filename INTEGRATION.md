@@ -1,4 +1,4 @@
-# Notifications App – Integration Guide
+[text](../glovo_uz_fixed/telegram_bot)# Notifications App – Integration Guide
 
 ## 1. Project Structure
 
